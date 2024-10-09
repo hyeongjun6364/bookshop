@@ -17,3 +17,5 @@ join category on books.category_id = category.id
 SELECT * FROM books LEFT
 join category on books.category_id = category.id
 where books.id = 1
+
+insert into likes (user_id, liked_book_id) values (1,1)
