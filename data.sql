@@ -27,3 +27,21 @@ insert into cartItems (book_id,quantity,user_id) values (1,1,1)
 select cartItems.id,book_id,title,summary,quantity,price from cartItems left join books on cartItems.book_id = books.id
 // 장바구니에서 선택한 목록 조회
 SELECT * FROM Bookshop.cartItems where user_id =1 and id in (1,3)
+
+//주문하기
+//배송정보입력
+insert into delivery (address, receiver, contact) values ("서울시 중구","김송아","010-1234-5678")
+const delivery_id = select max(id) from delivery
+
+// 주문 정보 입력
+insert into orders (book_title, total_quantity, total_price, user_id, delivery_id) values ("어린왕자들",3,60001,1,1)
+const order_id = select max(id) from orders
+
+
+//주문 상세 목록 입력
+insert into orderedbook (order_id, book_id, quantity) values(1,3,2)
+
+select max(id) from orderedbook
+
+//결제도니 도서 장바구니 삭제
+delete from cartItems where id in (1,2,3)
